@@ -6,7 +6,6 @@
 #include <cstdlib>
 
 int main() {
-    // Utwórz okno
     sf::RenderWindow window(sf::VideoMode(800, 600), "Kalkulator Kamila Ferdyna");
 
     sf::Font font;
