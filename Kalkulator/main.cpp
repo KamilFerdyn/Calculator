@@ -9,19 +9,16 @@ int main() {
     // Utwórz okno
     sf::RenderWindow window(sf::VideoMode(800, 600), "Kalkulator Kamila Ferdyna");
 
-    // Załaduj czcionkę
     sf::Font font;
     if (!font.loadFromFile("/Users/kamilferdyn/CLionProjects/Kalkulator/Arial.ttf")) {
         std::cerr << "Nie można załadować czcionki" << std::endl;
         return 1;
     }
 
-    // Utwórz tekst wyświetlający wynik
     sf::Text text("0", font, 50);
     text.setFillColor(sf::Color::Black);
     text.setPosition(50, 50);
 
-    // Tworzenie przycisków
     std::vector<sf::RectangleShape> buttons;
     std::vector<sf::Text> buttonLabels;
 
@@ -46,13 +43,11 @@ int main() {
         }
     }
 
-    // Zmienne do przechowywania stanu kalkulatora
     std::string currentInput = "0";
     double previousValue = 0.0;
     char operation = '\0';
     bool newInput = false;
 
-    // Główna pętla aplikacji
     while (window.isOpen()) {
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -68,7 +63,6 @@ int main() {
                             std::string label = buttonLabels[i].getString().toAnsiString();
                             std::cout << "Button " << label << " clicked" << std::endl;
 
-                            // Obsługa kliknięć
                             if (isdigit(label[0]) || label == ".") {
                                 if (newInput) {
                                     currentInput = label;
@@ -132,10 +126,8 @@ int main() {
             }
         }
 
-        // Wyczyść okno
         window.clear(sf::Color::White);
 
-        // Rysuj elementy interfejsu
         window.draw(text);
 
         for (auto &button : buttons) {
@@ -146,7 +138,6 @@ int main() {
             window.draw(label);
         }
 
-        // Wyświetl okno
         window.display();
     }
 
